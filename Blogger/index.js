@@ -1,4 +1,6 @@
 // NPM/Middleware
+require('dotenv').config();
+
 const expressEdge = require("express-edge");
 const express = require("express");
 const edge = require("edge.js");
@@ -38,7 +40,10 @@ app.use(expressSession({
   saveUninitialized: true
 }));
 
-mongoose.connect("mongodb://localhost/node-js-blog");
+const url = process.env.MONGO_CONNECTION_STRING;
+if(!url) throw new Error('>>>NOT PROCESSING<<<');
+console.log(url);
+mongoose.connect(url,{ useNewUrlParser: false });
 
 // Middleware
 app.use(fileUpload());
@@ -82,6 +87,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.use((req,res) => res.render('not-found'));
 
 // Run On Port
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("App is live at: http://localhost:8080/");
 });

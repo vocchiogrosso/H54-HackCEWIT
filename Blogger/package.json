@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
-    "start": "node index.js"
+    "browse":"gcloud app browse",
+    "deploy": "gcloud app deploy",
+    "logs": "gcloud app logs tail -s default",
+    "start": "node index.js",
+    "redeploy": "gcloud app deploy --stop-previous-version"
   },
   "keywords": [],
   "author": "",
-  "engines": {
-    "node": "8.x"
-  },
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.4",
@@ -18,6 +22,7 @@
     "cloudinary": "^1.13.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.3",
+    "dotenv": "^6.2.0",
     "edge.js": "^1.1.4",
     "express": "^4.16.4",
     "express-edge": "^1.0.0",
