@@ -7,16 +7,17 @@
     "node": ">=8"
   },
   "scripts": {
-    "browse":"gcloud app browse",
+    "browse": "gcloud app browse",
     "deploy": "gcloud app deploy",
     "logs": "gcloud app logs tail -s default",
     "start": "node index.js",
-    "redeploy": "gcloud app deploy --stop-previous-version"
+    "deploy -n": "gcloud app deploy --stop-previous-version"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/storage": "^2.4.2",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.13.2",
